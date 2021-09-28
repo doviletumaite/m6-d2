@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
-import pool from "./utils/db.js"
+import createTable from "./utils/create-tables.js"
+import route from "./services/products/routes.js"
 const server = express()
 const {PORT=5000} = process.env
 
@@ -12,11 +13,12 @@ const loggerMiddleware = (req, res, next) => {
 server.use(cors())
 server.use(express.json())
 server.use(loggerMiddleware)
-
+server.use("/products",route)
 server.listen(PORT,async ()=>{
     console.log(`Server is listening on port ${PORT}`)
-   const result = await pool.query("SELECT NOW()")
-   console.log(result)
+//    const result = await pool.query("SELECT NOW()")
+//    console.log(result)
+      await createTable()
 })
 
 server.on('error',(error)=>{
