@@ -3,7 +3,7 @@ import cors from "cors"
 import createTable from "./utils/create-tables.js"
 import route from "./services/products/routes.js"
 const server = express()
-const {PORT=5000} = process.env
+const {PORT} = process.env
 
 const loggerMiddleware = (req, res, next) => {
     console.log(`Request method ${req.method} +++++ Request URL ${req.url}`)
