@@ -79,12 +79,12 @@ route.put("/:id", async (req, res, next) => {
         const query =  `
        UPDATE products
        SET
-        name=${"'"+name+"'"},
-        description=${"'"+description+"'"},
-        brand=${"'"+brand+"'"},
-        image_url=${"'"+image_url+"'"},
-        price=${"'"+price+"'"},
-        category=${"'"+category+"'"},
+       name=${"'"+name+"'"},
+       description=${"'"+description+"'"},
+       brand=${"'"+brand+"'"},
+       image_url=${"'"+image_url+"'"},
+       price=${"'"+price+"'"},
+       category=${"'"+category+"'"},
         updated_at= NOW()
         WHERE id=${req.params.id}
        RETURNING *;
